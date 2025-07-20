@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSE-C 3rd Semester Timetable</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -14,82 +15,201 @@
             justify-content: center;
             align-items: center;
             padding: 1rem;
+            overflow-x: hidden;
         }
-        .timetable-container {
+        .timetable-container, .login-container, .admin-container {
             background: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 1400px;
             width: 100%;
-            padding: 2rem;
-            margin: 1rem;
+            padding: 2.5rem;
+            margin: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .timetable-container:hover, .login-container:hover, .admin-container:hover {
+            transform: translateY(-5px);
         }
         table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
-            border-radius: 0.5rem;
+            border-radius: 1rem;
             overflow: hidden;
+            background: #f9fafb;
         }
         th, td {
-            padding: 1rem;
+            padding: 1.25rem;
             text-align: left;
             border-bottom: 1px solid #e5e7eb;
+            transition: background 0.3s ease;
         }
         th {
-            background: #3b82f6;
+            background: #2563eb;
             color: white;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         tr:hover {
-            background: #f3f4f6;
-            transition: background 0.2s;
+            background: #eff6ff;
         }
         .day-header {
             background: #1e40af;
             color: white;
-            font-size: 1.25rem;
-            padding: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 1.75rem;
             text-align: center;
+            text-transform: uppercase;
         }
         .highlight {
             background: #fef3c7;
             font-weight: 500;
+            animation: pulse 2s infinite;
         }
         .current-class {
             background: #dbeafe;
             font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .current-class-section {
             background: #f3f4f6;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1f2937;
+        }
+        .review-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 0.75rem;
             padding: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1f2937;
+            display: none;
+        }
+        .review-box.delayed { border-color: #f59e0b; }
+        .review-box.cancelled { border-color: #dc2626; }
+        .review-box.substituted { border-color: #2563eb; }
+        .review-box.normal { border-color: #16a34a; }
+        .date-time {
+            background: #2563eb;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .login-form, .admin-form {
+            max-width: 400px;
+            margin: 0 auto;
             text-align: center;
         }
-        @media (max-width: 768px) {
-            th, td {
-                font-size: 0.875rem;
-                padding: 0.75rem;
+        .login-form input, .admin-form input, .admin-form select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        .login-form button, .admin-form button, .login-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .login-form button:hover, .admin-form button:hover, .login-button:hover {
+            background: #1e40af;
+        }
+        .error-message {
+            color: #dc2626;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .login-button-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        @keyframes pulse {
+            0% { background: #fef3c7; }
+            50% { background: #fde68a; }
+            100% { background: #fef3c7; }
+        }
+        @media (max-width: 1024px) {
+            .timetable-container, .login-container, .admin-container {
+                padding: 1.5rem;
+                margin: 1rem;
             }
-            .timetable-container {
+            th, td {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+            .day-header {
+                font-size: 1.25rem;
+                padding: 1.25rem;
+            }
+            .current-class-section, .date-time, .review-box {
+                font-size: 1rem;
                 padding: 1rem;
             }
-            .current-class-section {
-                font-size: 0.875rem;
+        }
+        @media (max-width: 640px) {
+            th, td {
+                font-size: 0.85rem;
+                padding: 0.75rem;
+            }
+            .timetable-container, .login-container, .admin-container {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            .day-header {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+            .current-class-section, .date-time, .review-box {
+                font-size: 0.9rem;
+                padding: 0.75rem;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
             }
         }
     </style>
 </head>
 <body>
-    <div class="timetable-container">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">CSE-C 3rd Semester Timetable</h1>
+    <div id="timetable-container" class="timetable-container">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">CSE-C 3rd Semester Timetable</h1>
         <p class="text-center text-gray-600 mb-4">Effective from 21/07/2025 | Roll Numbers: 239–358</p>
         <p class="text-center text-gray-600 mb-4">Theory: ATR-507 | Labs: ATR-CC-I</p>
-        <div id="current-class" class="current-class-section text-gray-800">
+        <div id="date-time" class="date-time">Loading date and time...</div>
+        <div id="current-class" class="current-class-section">
             Checking current class...
         </div>
-        
+        <div id="review-box" class="review-box">
+            No special announcements.
+        </div>
+        <div class="login-button-container">
+            <button class="login-button" onclick="showLogin()">Login</button>
+        </div>
         <table id="timetable">
             <thead>
                 <tr>
@@ -110,7 +230,7 @@
                 <tr><td>Monday</td><td>1:00–3:00</td><td>No class</td><td>-</td><td>-</td></tr>
                 <!-- Tuesday -->
                 <tr class="day-header"><td colspan="5">Tuesday</td></tr>
-                <tr><td>Tuesday</td><td>7:30–8:30</td><td>Probability and Statistics (PS)</td><td>Dr. Y. Sankar Rao</td><td>ATR-507</td></tr>
+                <tr><td>Tuesday</td><td>7:30–8:30</td><td>Probability and Statistics (PS)</td><td>Dr. Y. Sankar Rao</td><td>ATR-507</td></ Selling>
                 <tr><td>Tuesday</td><td>8:40–9:40</td><td>Soft Skills-1</td><td>Prof. Pragnya Paramita Samanta</td><td>ATR-507</td></tr>
                 <tr><td>Tuesday</td><td>9:50–12:00</td><td>No class</td><td>-</td><td>-</td></tr>
                 <tr><td>Tuesday</td><td>12:10–1:00</td><td>Lunch</td><td>-</td><td>-</td></tr>
@@ -150,26 +270,70 @@
                 <tr><td>Saturday</td><td>1:00–3:00</td><td>No class</td><td>-</td><td>-</td></tr>
             </tbody>
         </table>
+    </div>.
+
+    <div id="login-container" class="login-container" style="display: none;">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">Login</h1>
+        <div class="login-form">
+            <input type="text" id="username" placeholder="Enter ID" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <div id="error-message" class="error-message">Incorrect ID or Password</div>
+            <button onclick="handleLogin()">Login</button>
+        </div>
+    </div>
+
+    <div id="admin-container" class="admin-container" style="display: none;">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">ADMIN PORTAL</h1>
+        <div class="admin-form">
+            <select id="class-status" required>
+                <option value="" disabled selected>Select Status</option>
+                <option value="delayed">Delayed</option>
+                <option value="cancelled">Cancelled</option>
+                <option value="substituted">Substituted</option>
+                <option value="normal">Normal</option>
+            </select>
+            <input type="text" id="class-message" placeholder="Enter Message" required>
+            <button onclick="postMessage()">Post Message</button>
+        </div>
     </div>
 
     <script>
+        // Function to format time with AM/PM
+        function formatTime(date) {
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const formattedHours = hours % 12 || 12;
+            return `${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+        }
+
+        // Function to display current date and time in IST
+        function displayDateTime() {
+            const now = new Date();
+            const istTime = new Date(now.getTime());
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const formattedDate = istTime.toLocaleDateString('en-US', dateOptions);
+            const formattedTime = formatTime(istTime);
+            document.getElementById('date-time').textContent = `Today: ${formattedDate} | ${formattedTime}`;
+        }
+
         // Function to convert current time to IST and check current class
         function displayCurrentClass() {
             const now = new Date();
-            // Adjust to IST (UTC +5:30)
-            const istOffset = 5.5 * 60 * 60 * 1000;
-            const istTime = new Date(now.getTime() + istOffset);
+            const istTime = new Date(now.getTime());
             const currentHour = istTime.getHours();
             const currentMinute = istTime.getMinutes();
             const currentDay = istTime.toLocaleString('en-US', { weekday: 'long' });
-            // Check if current date is before timetable start (July 21, 2025)
             const timetableStart = new Date('2025-07-21');
             const isBeforeTimetable = now < timetableStart;
 
-            // Convert current time to minutes for comparison
             const currentTimeInMinutes = currentHour * 60 + currentMinute;
 
-            // Define time slots in minutes for comparison
             const timeSlots = [
                 { time: "7:30–8:30", start: 7 * 60 + 30, end: 8 * 60 + 30 },
                 { time: "8:40–9:40", start: 8 * 60 + 40, end: 9 * 60 + 40 },
@@ -184,10 +348,8 @@
             let currentClassInfo = "No classes scheduled at this time.";
             let foundCurrentClass = false;
 
-            // Clear previous highlights
             rows.forEach(row => row.classList.remove('current-class'));
 
-            // Check for current or next class
             if (!isBeforeTimetable) {
                 rows.forEach(row => {
                     const day = row.cells[0].textContent;
@@ -196,12 +358,10 @@
                     const faculty = row.cells[3].textContent;
                     const room = row.cells[4].textContent;
 
-                    // Skip day headers and non-class rows
                     if (row.classList.contains('day-header') || subject === 'No class' || subject === 'Lunch') {
                         return;
                     }
 
-                    // Find matching time slot
                     const slot = timeSlots.find(slot => slot.time === time);
                     if (slot && day === currentDay) {
                         if (currentTimeInMinutes >= slot.start && currentTimeInMinutes < slot.end) {
@@ -217,18 +377,79 @@
                 });
             }
 
-            // Display "No classes scheduled" if outside hours, before timetable start, or no class found
             if (!foundCurrentClass || isBeforeTimetable || currentTimeInMinutes < 7 * 60 + 30 || currentTimeInMinutes >= 15 * 60) {
                 currentClassInfo = "No classes scheduled at this time.";
             }
 
-            // Update current class display
             document.getElementById('current-class').textContent = currentClassInfo;
+
+            // Display review message if available
+            const reviewBox = document.getElementById('review-box');
+            const status = sessionStorage.getItem('classStatus');
+            const message = sessionStorage.getItem('classMessage');
+            if (status && status !== 'normal' && message) {
+                reviewBox.style.display = 'block';
+                reviewBox.textContent = `Status: ${status.charAt(0).toUpperCase() + status.slice(1)} - ${message}`;
+                reviewBox.className = `review-box ${status}`;
+            } else {
+                reviewBox.style.display = 'none';
+                reviewBox.textContent = 'No special announcements.';
+            }
+        }
+
+        // Function to handle login
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (username === 'admin' && password === 'amaan@1234') {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('timetable-container').style.display = 'none';
+                document.getElementById('admin-container').style.display = 'block';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        // Function to show timetable
+        function showTimetable() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('timetable-container').style.display = 'block';
+            document.getElementById('admin-container').style.display = 'none';
+            displayDateTime();
+            displayCurrentClass();
+        }
+
+        // Function to show login page
+        function showLogin() {
+            document.getElementById('login-container').style.display = 'block';
+            document.getElementById('timetable-container').style.display = 'none';
+            document.getElementById('admin-container').style.display = 'none';
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Function to post message
+        function postMessage() {
+            const status = document.getElementById('class-status').value;
+            const message = document.getElementById('class-message').value;
+            if (status && message) {
+                sessionStorage.setItem('classStatus', status);
+                sessionStorage.setItem('classMessage', message);
+                showTimetable();
+            }
         }
 
         // Run on page load and refresh every minute
-        displayCurrentClass();
-        setInterval(displayCurrentClass, 60000);
+        showTimetable();
+        setInterval(() => {
+            if (document.getElementById('timetable-container').style.display === 'block') {
+                displayDateTime();
+                displayCurrentClass();
+            }
+        }, 60000);
     </script>
 </body>
 </html>
