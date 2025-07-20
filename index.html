@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE-C 3rd Semester Timetable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .timetable-container {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+            margin: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background: #f3f4f6;
+            transition: background 0.2s;
+        }
+        .day-header {
+            background: #1e40af;
+            color: white;
+            font-size: 1.25rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .highlight {
+            background: #fef3c7;
+            font-weight: 500;
+        }
+        .current-class {
+            background: #dbeafe;
+            font-weight: 600;
+        }
+        .current-class-section {
+            background: #f3f4f6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            th, td {
+                font-size: 0.875rem;
+                padding: 0.75rem;
+            }
+            .timetable-container {
+                padding: 1rem;
+            }
+            .current-class-section {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timetable-container">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">CSE-C 3rd Semester Timetable</h1>
+        <p class="text-center text-gray-600 mb-4">Effective from 21/07/2025 | Roll Numbers: 239–358</p>
+        <p class="text-center text-gray-600 mb-4">Theory: ATR-507 | Labs: ATR-CC-I</p>
+        <div id="current-class" class="current-class-section text-gray-800">
+            Checking current class...
+        </div>
+        
+        <table id="timetable">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Subject</th>
+                    <th>Faculty</th>
+                    <th>Room</th>
+                </tr>
+            </thead>
+            <tbody id="timetable-body">
+                <!-- Monday -->
+                <tr class="day-header"><td colspan="5">Monday</td></tr>
+                <tr><td>Monday</td><td>7:30–8:30</td><td>Digital Logic Design (DLD)</td><td>Prof. Durga P Dash</td><td>ATR-507</td></tr>
+                <tr class="highlight"><td>Monday</td><td>8:40–9:40</td><td>C2-DLD Lab (Roll Numbers 292–358)</td><td>Prof. Durga P Dash</td><td>ATR-CC-I</td></tr>
+                <tr><td>Monday</td><td>9:50–12:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <tr><td>Monday</td><td>12:10–1:00</td><td>Lunch</td><td>-</td><td>-</td></tr>
+                <tr><td>Monday</td><td>1:00–3:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <!-- Tuesday -->
+                <tr class="day-header"><td colspan="5">Tuesday</td></tr>
+                <tr><td>Tuesday</td><td>7:30–8:30</td><td>Probability and Statistics (PS)</td><td>Dr. Y. Sankar Rao</td><td>ATR-507</td></tr>
+                <tr><td>Tuesday</td><td>8:40–9:40</td><td>Soft Skills-1</td><td>Prof. Pragnya Paramita Samanta</td><td>ATR-507</td></tr>
+                <tr><td>Tuesday</td><td>9:50–12:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <tr><td>Tuesday</td><td>12:10–1:00</td><td>Lunch</td><td>-</td><td>-</td></tr>
+                <tr><td>Tuesday</td><td>1:00–2:00</td><td>Design and Analysis of Algorithm Lab (DAA Lab)</td><td>Dr. Sudhir Ranjan Pattnaik</td><td>ATR-CC-I</td></tr>
+                <tr><td>Tuesday</td><td>2:00–3:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <!-- Wednesday -->
+                <tr class="day-header"><td colspan="5">Wednesday</td></tr>
+                <tr><td>Wednesday</td><td>7:30–8:30</td><td>Database Management System Lab (DBMS Lab)</td><td>Dr. Santosh Kumar Kar</td><td>ATR-CC-I</td></tr>
+                <tr><td>Wednesday</td><td>8:40–9:40</td><td>Python Programming</td><td>Prof. Swetanjali Moharana</td><td>ATR-507</td></tr>
+                <tr><td>Wednesday</td><td>9:50–12:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <tr><td>Wednesday</td><td>12:10–1:00</td><td>Lunch</td><td>-</td><td>-</td></tr>
+                <tr><td>Wednesday</td><td>1:00–2:00</td><td>Database Management System (DBMS)</td><td>Dr. Santosh Kumar Kar</td><td>ATR-507</td></tr>
+                <tr><td>Wednesday</td><td>2:00–3:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <!-- Thursday -->
+                <tr class="day-header"><td colspan="5">Thursday</td></tr>
+                <tr><td>Thursday</td><td>7:30–8:30</td><td>Database Management System (DBMS)</td><td>Dr. Santosh Kumar Kar</td><td>ATR-507</td></tr>
+                <tr class="highlight"><td>Thursday</td><td>8:40–9:40</td><td>C1-DLD Lab (Roll Numbers 239–290)</td><td>Prof. Durga P Dash</td><td>ATR-CC-I</td></tr>
+                <tr><td>Thursday</td><td>9:50–12:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <tr><td>Thursday</td><td>12:10–1:00</td><td>Lunch</td><td>-</td><td>-</td></tr>
+                <tr><td>Thursday</td><td>1:00–2:00</td><td>Probability and Statistics (PS)</td><td>Dr. Y. Sankar Rao</td><td>ATR-507</td></tr>
+                <tr><td>Thursday</td><td>2:00–3:00</td><td>Design and Analysis of Algorithm (DAA)</td><td>Dr. Sudhir Ranjan Pattnaik</td><td>ATR-507</td></tr>
+                <!-- Friday -->
+                <tr class="day-header"><td colspan="5">Friday</td></tr>
+                <tr><td>Friday</td><td>7:30–8:30</td><td>Python Programming</td><td>Prof. Swetanjali Moharana</td><td>ATR-507</td></tr>
+                <tr><td>Friday</td><td>8:40–9:40</td><td>Digital Logic Design (DLD)</td><td>Prof. Durga P Dash</td><td>ATR-507</td></tr>
+                <tr><td>Friday</td><td>9:50–10:50</td><td>Environmental Science and Engineering (ESE)</td><td>Prof. Jagannath Panda</td><td>ATR-507</td></tr>
+                <tr><td>Friday</td><td>10:50–12:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <tr><td>Friday</td><td>12:10–1:00</td><td>Lunch</td><td>-</td><td>-</td></tr>
+                <tr><td>Friday</td><td>1:00–2:00</td><td>Python Programming Lab (Python Lab)</td><td>Prof. Swetanjali Moharana</td><td>ATR-CC-I</td></tr>
+                <tr><td>Friday</td><td>2:00–3:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <!-- Saturday -->
+                <tr class="day-header"><td colspan="5">Saturday</td></tr>
+                <tr><td>Saturday</td><td>7:30–8:30</td><td>Probability and Statistics (PS)</td><td>Dr. Y. Sankar Rao</td><td>ATR-507</td></tr>
+                <tr><td>Saturday</td><td>8:40–9:40</td><td>Design and Analysis of Algorithm (DAA)</td><td>Dr. Sudhir Ranjan Pattnaik</td><td>ATR-507</td></tr>
+                <tr><td>Saturday</td><td>9:50–12:00</td><td>No class</td><td>-</td><td>-</td></tr>
+                <tr><td>Saturday</td><td>12:10–1:00</td><td>Lunch</td><td>-</td><td>-</td></tr>
+                <tr><td>Saturday</td><td>1:00–3:00</td><td>No class</td><td>-</td><td>-</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Function to convert current time to IST and check current class
+        function displayCurrentClass() {
+            const now = new Date();
+            // Adjust to IST (UTC +5:30)
+            const istOffset = 5.5 * 60 * 60 * 1000;
+            const istTime = new Date(now.getTime() + istOffset);
+            const currentHour = istTime.getHours();
+            const currentMinute = istTime.getMinutes();
+            const currentDay = istTime.toLocaleString('en-US', { weekday: 'long' });
+            // Check if current date is before timetable start (July 21, 2025)
+            const timetableStart = new Date('2025-07-21');
+            const isBeforeTimetable = now < timetableStart;
+
+            // Convert current time to minutes for comparison
+            const currentTimeInMinutes = currentHour * 60 + currentMinute;
+
+            // Define time slots in minutes for comparison
+            const timeSlots = [
+                { time: "7:30–8:30", start: 7 * 60 + 30, end: 8 * 60 + 30 },
+                { time: "8:40–9:40", start: 8 * 60 + 40, end: 9 * 60 + 40 },
+                { time: "9:50–10:50", start: 9 * 60 + 50, end: 10 * 60 + 50 },
+                { time: "10:50–12:00", start: 10 * 60 + 50, end: 12 * 60 },
+                { time: "12:10–1:00", start: 12 * 60 + 10, end: 13 * 60 },
+                { time: "1:00–2:00", start: 13 * 60, end: 14 * 60 },
+                { time: "2:00–3:00", start: 14 * 60, end: 15 * 60 }
+            ];
+
+            const rows = document.querySelectorAll('#timetable-body tr');
+            let currentClassInfo = "No classes scheduled at this time.";
+            let foundCurrentClass = false;
+
+            // Clear previous highlights
+            rows.forEach(row => row.classList.remove('current-class'));
+
+            // Check for current or next class
+            if (!isBeforeTimetable) {
+                rows.forEach(row => {
+                    const day = row.cells[0].textContent;
+                    const time = row.cells[1].textContent;
+                    const subject = row.cells[2].textContent;
+                    const faculty = row.cells[3].textContent;
+                    const room = row.cells[4].textContent;
+
+                    // Skip day headers and non-class rows
+                    if (row.classList.contains('day-header') || subject === 'No class' || subject === 'Lunch') {
+                        return;
+                    }
+
+                    // Find matching time slot
+                    const slot = timeSlots.find(slot => slot.time === time);
+                    if (slot && day === currentDay) {
+                        if (currentTimeInMinutes >= slot.start && currentTimeInMinutes < slot.end) {
+                            currentClassInfo = `Current Class: ${subject} | Faculty: ${faculty} | Venue: ${room}`;
+                            row.classList.add('current-class');
+                            foundCurrentClass = true;
+                        } else if (currentTimeInMinutes < slot.start && !foundCurrentClass) {
+                            currentClassInfo = `Next Class: ${subject} at ${time} | Faculty: ${faculty} | Venue: ${room}`;
+                            row.classList.add('current-class');
+                            foundCurrentClass = true;
+                        }
+                    }
+                });
+            }
+
+            // Display "No classes scheduled" if outside hours, before timetable start, or no class found
+            if (!foundCurrentClass || isBeforeTimetable || currentTimeInMinutes < 7 * 60 + 30 || currentTimeInMinutes >= 15 * 60) {
+                currentClassInfo = "No classes scheduled at this time.";
+            }
+
+            // Update current class display
+            document.getElementById('current-class').textContent = currentClassInfo;
+        }
+
+        // Run on page load and refresh every minute
+        displayCurrentClass();
+        setInterval(displayCurrentClass, 60000);
+    </script>
+</body>
+</html>
